@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Results Test</title>
+    <link rel="stylesheet" type="text/css" href="results.css">
+</head>
+
+<body>
+   
+    <div class="rel-container">
+            <div class="rel-inside-con">
+                <p class="rel-title-con">WORK FROM HOME ERGONOMICS SELF-ASSESSMENT</p>
+            </div>
+            <div class="per-con">
+                <p class="para"><span id="congratsMessage"></span></p>
+                <p class="percentage"><span id="yesPercentageDisplay"></span></p>
+              
+            </div>
+           
+            <div class="reco" id="recommendations">
+                <p class="para-para">To improve your home 100% here are your personalized recommendations:</p>
+                <ul class="para-2" id="recommendationList"></ul>
+            </div>
+            <div>
+                <p class="footer">All rights reserved @2023</p>
+            </div>
+            
+
+    </div>
+   
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve the yesCount from sessionStorage
+            const yesCount = sessionStorage.getItem("yesCount");
+
+            // Calculate the percentage
+            const totalQuestions = 20;
+            const yesPercentage = Math.round((yesCount / totalQuestions) * 100);
+
+            // Display the yesPercentage in the results page
+            const yesPercentageDisplay = document.getElementById("yesPercentageDisplay");
+            if (yesPercentageDisplay) {
+                yesPercentageDisplay.innerText = yesPercentage + '%';
+            } else {
+                console.error("Element with ID 'yesPercentageDisplay' not found.");
+            }
+            
+            const congratsMessage = document.getElementById("congratsMessage");
+            if (congratsMessage) {
+                if (yesPercentage > 50) {
+                    congratsMessage.innerText = "Congratulations your workplace is ergonomically appropriate. Your rating is";
+                } else {
+                    congratsMessage.innerText = "Oh no! Your workplace might cause pain and slow you down. Your rating is";
+                }
+            } else {
+                console.error("Element with ID 'congratsMessage' not found.");
+            }
+
+            
+            // Retrieve the "No" answers from sessionStorage
+            const noAnswers = JSON.parse(sessionStorage.getItem("noAnswers")) || [];
+
+            // Display recommendations for each "No" answer
+            const recommendationList = document.getElementById("recommendationList");
+           
+            if (recommendationList) {
+                const recommendationsData = [
+    { text: "DIY - Create a standing station and alternate your positions throughout the day. Ensure that your keyboard, mouse and monitor screen are at the correct height." },
+    { text: "Add a footrest; DIY - books or boxes, duct taped as needed" },
+    { text: "Add a lumbar cushion; DIY: Use a rolled towel behind your low back. Pin on a strap to make it stay in place better. See photo ->",
+      imageSrc: "ergo_3.png"  },
+    { text: "Use a footrest to raise your feet slightly. Add a cushion to the backrest to make the seatpan smaller. See photo -> ",
+      imageSrc: "ergo_4.png" },
+    { text: "Raise or lower workstation. Raise or lower keyboard. Raise or lower chair. Change the keyboard tilt. Check posture. Alter the keyboard feet and check your wrist posture." },
+    { text: "Move mouse closer to the keyboard." },
+    { text: "Adjust Settings - Click on Windows key/Settings/System/Display. Blink often on purpose. Look across the room often, or out the window, to change your focal point." },
+    { text: "Try switching to the other hand for a while to give your uncomfortable hand a rest. To use either index finger as your primary click, change mouse button settings in the computer control panel. Investigate other types of pointing devices." },
+    { text: "Reposition monitor – align the center of the monitor with the middle of your body." },
+    { text: "Reposition monitor — lean against the backrest and reach out in front of you to measure the distance. Start with the monitor about an arm’s length away. Adjust the distance as needed for eye comfort." },
+    { text: "If you have a separate keyboard and mouse, raise or lower the monitor so the top of the screen is at eye level. If you tend to tilt your chin up to read the screen, lower the monitor a few more inches. Raise the chair and add a footrest if needed. Tilt the screen so that it’s at a more natural reading angle. See photo ->",
+      imageSrc: "ergo_11.png" },
+    { text: "Rearrange workstation – make more space under the desk so that you can’t possibly catch your foot on a cord or other obstacle." },
+    { text: "Rearrange workstation. See photo ->" ,
+      imageSrc: "ergo_13.png" },
+    { text: "Set reminders to take breaks. Refocus your eye gaze on something 20 feet away every 20 minutes. Purposely blink often." },
+    { text: "Prevent slips, trips and falls with good housekeeping." },
+    { text: "Use speakerphone. Obtain a headset. Use ear buds." },
+    { text: "Use a copy holder; DIY: Prop up papers on a 3-ringed binder turned sideways. Put a binder clip on the narrow edge to keep papers from sliding off." },
+    { text: "If possible, get appropriate laptop accessories, such as a separate keyboard and mouse." },
+    { text: "Adjust your distance closer to the computer. Adjust the height of the monitor." },
+    { text: "Stretch and exercise for several times in between you working hours." }
+    
+];
+
+
+                noAnswers.forEach((questionIndex) => {
+    const listItem = document.createElement("li");
+    const recommendation = recommendationsData[questionIndex];
+
+    if (recommendation) {
+        // Add text content
+        const textParagraph = document.createElement("p");
+        textParagraph.innerText = recommendation.text;
+        listItem.appendChild(textParagraph);
+
+        // Add image
+        if (recommendation.imageSrc) {
+            const image = document.createElement("img");
+            image.src = recommendation.imageSrc;
+            listItem.appendChild(image);
+        }
+
+        recommendationList.appendChild(listItem);
+    } else {
+        console.error(`Recommendation not found for questionIndex: ${questionIndex}`);
+    }
+}); 
+        }});
+    
+    </script>
+</body>
+</html>

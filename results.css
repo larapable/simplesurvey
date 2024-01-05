@@ -1,0 +1,94 @@
+
+body {
+    background: #737373;
+}
+
+.rel-container {
+    height: auto;
+    width: 180vh;
+    background: #fff;
+    margin: 0 auto;
+
+ 
+    
+}
+
+.rel-inside-con {
+    width:180vh;
+    height: 100px;
+    background: #1A202F;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.rel-title-con{
+    color: #fff;
+    font-size: 30px;
+}
+
+.per-con {
+    align-items: center;
+    text-align: center;
+
+}
+
+.percentage {    
+
+    font-size: 100px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    color: red;
+
+    
+}
+
+.para {
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.reco {
+    display: flex;
+    width:160vh;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    border-radius: 10px;
+    border: 2px solid #1A202F;
+    margin: 0 auto;
+}
+
+.para-para {
+    font-size: 23px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 550;
+    text-align: center;
+    color: #1A202F;
+}
+
+.para-2 {
+    list-style-type:circle;
+    padding: 10px;
+    text-align: center;
+}
+
+.para-2 li {
+    font-size: 18px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 10px; /* Adjust as needed for spacing between list items */
+}
+
+.footer {
+    font-style: italic;
+    font-size: 10px;
+    color: #737373;
+    text-align: center;
+    padding: 20px;
+}
